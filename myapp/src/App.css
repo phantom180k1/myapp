@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   margin: 0;
@@ -18,9 +22,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 4rem;
+  padding: 1.2rem 3rem;
   max-width: 1280px;
   margin: 0 auto;
+  position: sticky;
+  top: 0;
+  background-color: rgba(11, 17, 32, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .logo {
@@ -28,23 +38,26 @@ body {
   font-weight: 800;
   letter-spacing: 2px;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   list-style: none;
 }
 
-.nav-links a {
+.nav-btn {
+  background: none;
+  border: none;
   color: #94a3b8;
-  text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
+  cursor: pointer;
   transition: color 0.2s;
 }
 
-.nav-links a:hover {
+.nav-btn:hover {
   color: #38bdf8;
 }
 
@@ -65,11 +78,11 @@ body {
   transform: translateY(-2px);
 }
 
-/* Main Layout */
+/* Hero Section */
 .hero-container {
   max-width: 1280px;
-  margin: 2rem auto 0 auto;
-  padding: 2rem 4rem;
+  margin: 2rem auto 4rem auto;
+  padding: 2rem 3rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
@@ -86,7 +99,7 @@ body {
 
 .title {
   font-family: 'Playfair Display', serif;
-  font-size: 3.8rem;
+  font-size: 3.5rem;
   line-height: 1.15;
   font-weight: 800;
   color: #ffffff;
@@ -104,20 +117,53 @@ body {
   font-size: 1.1rem;
   line-height: 1.7;
   max-width: 520px;
+  margin-bottom: 2rem;
 }
 
-/* Banner Ilustrativo del Cosmos */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-primary {
+  background-color: #0284c7;
+  color: #ffffff;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #0369a1;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+  padding: 0.8rem 1.8rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: rgba(56, 189, 248, 0.1);
+}
+
+/* Tarjeta Ilustrativa */
 .cosmos-card {
   background: linear-gradient(145deg, #0284c7 0%, #1e1b4b 100%);
   border-radius: 24px;
-  height: 420px;
+  height: 380px;
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 40px -15px rgba(2, 132, 199, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .star {
@@ -134,7 +180,185 @@ body {
   position: absolute;
   border: 1px dashed rgba(255, 255, 255, 0.25);
   border-radius: 50%;
-  width: 320px;
-  height: 320px;
+  width: 300px;
+  height: 300px;
   top: 10%;
+  left: 10%;
+}
+
+/* Galería de Tarjetas */
+.cards-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 3rem 6rem 3rem;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: #f8fafc;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.info-card {
+  background-color: #1e293b;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  scroll-margin-top: 100px;
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-6px);
+}
+
+.image-wrapper {
+  position: relative;
+  height: 200px;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background-color: rgba(15, 23, 42, 0.85);
+  color: #38bdf8;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+}
+
+.main-desc {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.extra-info {
+  background-color: rgba(15, 23, 42, 0.6);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border-left: 3px solid #f59e0b;
+  margin-bottom: 1.5rem;
+}
+
+.extra-info strong {
+  display: block;
+  font-size: 0.85rem;
+  color: #f59e0b;
+  margin-bottom: 0.3rem;
+}
+
+.extra-info p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.card-btn {
+  margin-top: auto;
+  background-color: #334155;
+  color: #38bdf8;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.card-btn:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+/* Estilos de Modales */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: #1e293b;
+  padding: 2.5rem;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f59e0b;
+}
+
+.modal-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.modal-extra {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.btn-close {
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 0.6rem 1.6rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1rem;
 }
